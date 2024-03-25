@@ -6,7 +6,7 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 18:47:35 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/03/25 19:02:08 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/03/25 19:57:43 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,10 @@ void	stack_init(t_stack **a, char **av, bool flag_ac)
 	while (av[i])
 	{
 		if (!(syntax_check(av[i])))
-			ft_error('S');
+		{
+			ft_putstr_fd("Syntax Error\n", 2);
+			return ;
+		}
 		nbr = ft_atol(av[i]);
 		if (nbr > INT_MAX || nbr < INT_MIN)
 			ft_putstr_fd("Int size Error\n", 2);
