@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   short_sort.c                                       :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/22 13:34:17 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/03/23 17:47:55 by lotrapan         ###   ########.fr       */
+/*   Created: 2024/03/24 17:52:49 by lotrapan          #+#    #+#             */
+/*   Updated: 2024/03/24 17:53:32 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/* void short_sort(t_stack *a, t_stack *b)
+void	ft_free_split(char **argv)
 {
-	if (a->size == 2)
-	{
-		ft_putstr_fd("sa\n", 1);
-	}
-	else if (a->size == 3)
-		sort_three(a);
-	else if (a->size <= 5)
-		sort_five(a, b);
-} */
+	int	i;
+
+	i = -1;
+	if (NULL == argv || NULL == *argv)
+		return ;
+	while (argv[i])
+		free(argv[i++]);
+	free(argv - 1);
+}

@@ -6,25 +6,43 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 18:47:35 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/03/22 19:30:40 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/03/25 19:02:08 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	stack_free(t_stack *a)
+void	add_node(t_stack **a, long nbr)
 {
-	if (!a)
+	t_stack *new;
+	t_stack *last_node;
+
+	if (a == NULL)
 		return ;
-	free(a->stack);
-	free(a);
+	new = malloc(sizeof(t_stack));
+	if (!new)
+		ft_error('M');
+	new->value = nbr;
+	new->next = NULL;
+	if (!*a)
+	{
+		*a = new;
+		new->prev = NULL;
+	}
+	else
+	{
+		last_node = *a;
+		while (last_node->next)
+			last_node = last_node->next;
+		last_node->next = new;
+		new->prev = last_node;
+	}
 }
 
-void	stack_init(t_stack **a, char **av)
+void	stack_init(t_stack **a, char **av, bool flag_ac)
 {
 	long nbr;
 	int i;
-	int size;
 
 	i = 0;
 	while (av[i])
@@ -34,17 +52,26 @@ void	stack_init(t_stack **a, char **av)
 		nbr = ft_atol(av[i]);
 		if (nbr > INT_MAX || nbr < INT_MIN)
 			ft_putstr_fd("Int size Error\n", 2);
-		if (check_doubles(*a, nbr))
+		if (!check_doubles(*a, (int)nbr))
 			ft_putstr_fd("Doppelganger Error\n", 2);
-		ft_list_add_back(a, ft_list_new(nbr));
+		add_node(a, (int)nbr);
 		i++;
 	}
-	if (a == NULL)
+	(*a)->size = i;
+	if (flag_ac)
+		ft_free_split(av);
+}
+
+void	print_stack(t_stack *a)
+{
+	t_stack *tmp;
+
+	tmp = a;
+	while (tmp)
 	{
-		ft_putstr_fd("No numbers Error\n", 2);
-		exit(1);
+		ft_putnbr_fd(tmp->value, 1);
+		ft_putchar_fd('\n', 1);
+		tmp = tmp->next;
 	}
-	size = ft_list_size(*a);
-	(*a)->size = size;
 }
 	

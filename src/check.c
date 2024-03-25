@@ -6,7 +6,7 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 13:40:20 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/03/22 19:14:05 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/03/24 17:45:49 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ bool	sort_check(t_stack *a)
 	tmp = a;
 	while (tmp->next)
 	{
-		if (tmp->nbr > tmp->next->nbr)
+		if (tmp->value > tmp->next->value)
 			return (false);
 		tmp = tmp->next;
 	}
@@ -49,11 +49,11 @@ bool	check_doubles(t_stack *a, long nbr)
 	t_stack *tmp;
 
 	if (!a)
-		return (false);
+		return (true);
 	tmp = a;
 	while (tmp)
 	{
-		if (tmp->nbr == nbr)
+		if (tmp->value == nbr)
 			return (false);
 		tmp = tmp->next;
 	}

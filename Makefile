@@ -2,40 +2,41 @@ NAME	= push_swap
 CC		= cc
 CFLAGS	= -Wall -Wextra -Werror -g -I./include
 SRCDIR	= src
+BINDIR = bin
 RM		= rm -f
 
-SRC = $(SRCDIR)/main.c \
-	$(SRCDIR)/short_sort.c \
-	$(SRCDIR)/long_sort.c \
-	$(SRCDIR)/stack_utils.c \
-	$(SRCDIR)/command.c \
-	$(SRCDIR)/check.c \
+SRC = main.c \
+	short_sort.c \
+	long_sort.c \
+	stack_utils.c \
+	command.c \
+	check.c \
+	utils.c 
 
+OBJ := $(SRC:%.c=$(SRCDIR)/%.o)
 
-all: $(NAME)
+all: $(BINDIR)/$(NAME)
 
-# Regola per compilare l'eseguibile
-$(NAME): $(SRC)
+$(BINDIR)/$(NAME): $(OBJ)
 	@make -C libft/
-	$(CC) $(CFLAGS) -o bin/$(NAME) $(SRC) -Llibft -lft
-	@echo "${BOLD}Creating  -> ${RED}$(NAME)${NO_COLOR}"
+	$(CC) $(CFLAGS)  $(OBJ) -o $@ -Llibft -lft
+	@echo "${BOLD}Creating  -> ${RED}${NAME}${NO_COLOR}"
 	@${MAKE} camel
 
+$(SRCDIR)/%.o: $(SRCDIR)/%.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
-# Regola clean per rimuovere gli oggetti
 clean:
 	@make clean -C libft/
+	@$(RM) $(OBJ)
 
-# Regola fclean per rimuovere gli oggetti e l'eseguibile
 fclean: clean
 	@make fclean -C libft/
-	@$(RM) $(NAME)
+	@$(RM) $(BINDIR)/$(NAME)
 
-# Regola re per ricompilare tutto
 re: fclean all
 
-# Regola per non considerare i file con questi nomi come obiettivi
-.PHONY: all clean fclean re
+.PHONY: clean fclean re all
 .SILENT:
 
 RED         := ${shell tput setaf 1}
