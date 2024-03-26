@@ -6,7 +6,7 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 14:33:57 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/03/25 20:00:07 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/03/26 19:41:12 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,25 @@ typedef struct s_stack
 ///////////////
 
 //*CHECK*//
-bool	sort_check(t_stack *a);
+bool	sort_check(t_stack **a);
 bool	syntax_check(char *str);
 bool	check_doubles(t_stack *a, long nbr);
 //*COMMAND*//
-void	swap(t_stack **stack);
+void	sa(t_stack **a);
+void	sb(t_stack **b);
+void	ss(t_stack **a, t_stack **b);
+void	ra(t_stack **a);
+void	rb(t_stack **b);
+void	rr(t_stack **a, t_stack **b);
+void	rra(t_stack **a);
 //*SHORT_SORT*//
-void	short_sort(t_stack *a, t_stack *b);
+void	short_sort(t_stack **a, t_stack **b);
 //*LONG_SORT*//
 //*STACK_UTILS*//
 void	stack_init(t_stack **a, char **av, bool flag_ac);
-void	print_stack(t_stack *a);
+void	print_stack(t_stack **stack);
 void	add_node(t_stack **a, long nbr);
+void	find_biggest(t_stack **stack);
 //*UTILS*//
 void	ft_free_split(char **argv);
 void	ft_free_stack(t_stack *stack);

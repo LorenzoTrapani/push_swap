@@ -6,7 +6,7 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 18:47:35 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/03/25 19:57:43 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/03/26 19:34:24 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,11 @@ void	stack_init(t_stack **a, char **av, bool flag_ac)
 		ft_free_split(av);
 }
 
-void	print_stack(t_stack *a)
+void	print_stack(t_stack **stack)
 {
 	t_stack *tmp;
 
-	tmp = a;
+	tmp = *stack;
 	while (tmp)
 	{
 		ft_putnbr_fd(tmp->value, 1);
@@ -77,4 +77,3 @@ void	print_stack(t_stack *a)
 		tmp = tmp->next;
 	}
 }
-	

@@ -6,19 +6,19 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 13:40:20 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/03/24 17:45:49 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/03/26 19:23:06 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-bool	sort_check(t_stack *a)
+bool	sort_check(t_stack **a)
 {
 	t_stack *tmp;
 
-	if (!a)
+	if (!a || !*a)
 		return (true);
-	tmp = a;
+	tmp = *a;
 	while (tmp->next)
 	{
 		if (tmp->value > tmp->next->value)
