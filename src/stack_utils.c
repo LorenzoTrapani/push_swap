@@ -6,7 +6,7 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 18:47:35 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/03/27 15:22:01 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/03/27 17:05:58 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,18 @@ int stack_len(t_stack **stack)
 		tmp = tmp->next;
 	}
 	return (i);
+}
+
+t_stack *stack_last(t_stack **stack)
+{
+	t_stack *tmp;
+
+	tmp = *stack;
+	while (tmp)
+	{
+		if (!tmp->next)
+			return (tmp);
+		tmp = tmp->next;
+	}
+	return (tmp);
 }

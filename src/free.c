@@ -6,22 +6,22 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 17:52:49 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/03/27 15:21:00 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/03/27 16:39:58 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_free_split(char **argv)
+void	ft_free_split(char **av)
 {
 	int	i;
 
 	i = -1;
-	if (NULL == argv || NULL == *argv)
+	if ( av == NULL || *av == NULL)
 		return ;
-	while (argv[i])
-		free(argv[i++]);
-	free(argv - 1);
+	while (av[i])
+		free(av[i++]);
+	free(av - 1);
 }
 
 void	ft_free_stack(t_stack *stack)

@@ -6,7 +6,7 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 14:33:57 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/03/27 15:23:30 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/03/27 17:07:31 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,13 @@ void	pb(t_stack **a, t_stack **b);
 void	short_sort(t_stack **a, t_stack **b);
 //*LONG_SORT*//
 //*STACK_UTILS*//
-void	stack_init(t_stack **a, char **av, bool flag_ac);
-void	print_stack(t_stack **stack);
-void	add_node(t_stack **a, long nbr);
-void	find_biggest(t_stack **stack);
-int		stack_len(t_stack **stack);
-//*UTILS*//
-void	ft_free_split(char **argv);
+void		stack_init(t_stack **a, char **av, bool flag_ac);
+void		print_stack(t_stack **stack);
+void		add_node(t_stack **a, long nbr);
+int			stack_len(t_stack **stack);
+t_stack 	*stack_last(t_stack **stack);
+//*FREE*//
+void	ft_free_split(char **av);
 void	ft_free_stack(t_stack *stack);
 void	ft_free_error(t_stack **a, char **av, bool flag_ac, char *error_name);
 

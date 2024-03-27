@@ -6,7 +6,7 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 13:34:17 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/03/27 16:19:59 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/03/27 16:54:06 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,11 @@ static void mini_sort(t_stack **a, t_stack **b)
 	lowest = find_lowest(*a);
 	while (stack_len(a) > 3)
 	{
-		while (*a != lowest)
-		if ( == lowest)
-			ra(a);
+		if (stack_last(a) == lowest)
+			rra(a);
+		else
+			while (*a != lowest)
+				ra(a);
 		pb(a, b);
 		lowest = find_lowest(*a);
 	}

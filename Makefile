@@ -11,7 +11,7 @@ SRC = main.c \
 	stack_utils.c \
 	command.c \
 	check.c \
-	utils.c 
+	free.c 
 
 OBJ := $(SRC:%.c=$(SRCDIR)/%.o)
 

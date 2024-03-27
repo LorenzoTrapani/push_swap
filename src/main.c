@@ -6,7 +6,7 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 14:28:20 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/03/27 16:15:07 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/03/27 16:42:33 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	main(int ac, char **av)
 			long_sort(a, b); */
 	}
 	//ft_printf(1, "Stack a after:\n");
-	//print_stack(&a);
+	// print_stack(&a);
 	//ft_printf(1, "Stack b after:\n");
 	//print_stack(&b);
 	ft_free_stack(a);
