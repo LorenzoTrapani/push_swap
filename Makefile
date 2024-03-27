@@ -9,9 +9,12 @@ SRC = main.c \
 	short_sort.c \
 	long_sort.c \
 	stack_utils.c \
-	command.c \
 	check.c \
-	free.c 
+	free.c \
+	push.c \
+	rotate.c \
+	reverse_rotate.c \
+	swap.c \
 
 OBJ := $(SRC:%.c=$(SRCDIR)/%.o)
 
@@ -33,6 +36,8 @@ clean:
 fclean: clean
 	@make fclean -C libft/
 	@$(RM) $(BINDIR)/$(NAME)
+	@echo "${BOLD}Cleaning  -> ${RED}${NAME}${NO_COLOR}"
+	@${MAKE} camel_clean
 
 re: fclean all
 
@@ -58,3 +63,18 @@ camel:
 	@echo '	⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⢩⠏⠇⠀⠀⠀⠀⠀⢀⢆⠞⡜⠀⠀⠀'
 	@echo '	⠀⠀⠀⠀⠀⠀⠀⢀⣠⠎⠜⠐⡄⠀⠀⠀⣀⡠⠊⣦⠂⠃⠀⠀⠀'
 	@echo '	⠀⠀⠀⠀⠀⠀⠀⠈⠛⠯⢎⣢⡥⠀⠀⠘⠺⠼⢮⡟⣄⠇⠀⠀⠀'
+
+camel_clean:
+	
+	@echo '	    ⣎⣓⢶⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ '
+	@echo '                               '
+	@echo '	⣾⣀⣎⡱⢢⡉⠴⠀⡾⠀⠀⠀⡸⠒⠀⠀⠱⡄⠀⠀⠀⠀⠀⠀⠀'
+	@echo ''
+	@echo '	⠀⠀⠀⠀⠘⡄⠀⠈⠒⡎⠀⠀⠀⠀⠈⠉⠉⠀⠀⠈⢒⠵⠀⠀⠀'
+	@echo ''
+	@echo '	⠀⠀⠀⠀⠀⠀⠀⠀⠈⡟⡀⠀⠀⣰⣞⣀⢠⠶⡀⠀⠸⡉⢳⠦⠀'
+	@echo ''
+	@echo '	⠀⠀⠀⠀⠀⠀⠀⠀⠀⠰⣰⠀⢰⠀⠀⠀⠀⠀⠈⢣⢥⢠⠇⠹⠀'
+	@echo '⠀'
+	@echo '	⠀⠀⠀⠀⠀⠀⠀⢀⣠⠎⠜⠐⡄⠀⠀⠀⣀⡠⠊⣦⠂⠃⠀⠀⠀'
+	@echo ''

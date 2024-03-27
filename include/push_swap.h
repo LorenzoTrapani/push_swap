@@ -6,7 +6,7 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 14:33:57 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/03/27 17:07:31 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/03/27 18:56:43 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,21 @@ typedef struct s_stack
 bool	sort_check(t_stack **a);
 bool	syntax_check(char *str);
 bool	check_doubles(t_stack *a, long nbr);
-//*COMMAND*//
+//*SWAP*//
 void	sa(t_stack **a);
 void	sb(t_stack **b);
 void	ss(t_stack **a, t_stack **b);
+//*PUSH*//
+void	pa(t_stack **a, t_stack **b);
+void	pb(t_stack **a, t_stack **b);
+//*ROTATE*//
 void	ra(t_stack **a);
 void	rb(t_stack **b);
 void	rr(t_stack **a, t_stack **b);
+//*REVERSE_ROTATE*//
 void	rra(t_stack **a);
 void	rrb(t_stack **b);
 void	rrr(t_stack **a, t_stack **b);
-void	pa(t_stack **a, t_stack **b);
-void	pb(t_stack **a, t_stack **b);
 //*SHORT_SORT*//
 void	short_sort(t_stack **a, t_stack **b);
 //*LONG_SORT*//
