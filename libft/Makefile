@@ -63,10 +63,10 @@ SRCS = ./ctype/ft_isalnum.c \
 	./string/ft_strnstr.c \
 	./string/ft_strrchr.c \
 	./string/ft_strtrim.c \
-	./ft_printf/ft_printf.c \
+	./string/ft_strcmp.c \
+	.///ft_printf///ft_printf.c \
 	./pipex/pipex.c \
 	./pipex/utils.c \
-	./ft_error/ft_error.c 
 
 
 OBJS = $(SRCS:.c=.o)

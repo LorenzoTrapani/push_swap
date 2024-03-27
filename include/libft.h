@@ -6,7 +6,7 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 13:03:03 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/03/22 19:21:04 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/03/27 16:14:12 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ char			*ft_strjoin(const char *s1, const char *s2);
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void			ft_striteri(char *s, void (*f)(unsigned int, char*));
 char			*ft_strtrim(char const *s1, char const *set);
+int 			ft_strcmp(const char *s1, const char *s2);
 /******************************************************************************/
 /*                     Functions inside /stdlib                               */
 /******************************************************************************/

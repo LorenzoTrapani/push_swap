@@ -6,7 +6,7 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 13:34:17 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/03/26 19:41:29 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/03/27 16:19:59 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static t_stack	*find_highest(t_stack *stack)
 	int				highest;
 	t_stack		*highest_node;
 
-	if (NULL == stack)
+	if (stack == NULL)
 		return (NULL);
 	highest = INT_MIN;
 	while (stack)
@@ -32,15 +32,53 @@ static t_stack	*find_highest(t_stack *stack)
 	return (highest_node);
 }
 
+static t_stack	*find_lowest(t_stack *stack)
+{
+	int				lowest;
+	t_stack		*lowest_node;
+
+	if (stack == NULL)
+		return (NULL);
+	lowest = INT_MAX;
+	while (stack)
+	{
+		if (stack->value < lowest)
+		{
+			lowest = stack->value;
+			lowest_node = stack;
+		}
+		stack = stack->next;
+	}
+	return (lowest_node);
+}
+
+static void mini_sort(t_stack **a, t_stack **b)
+{
+	t_stack *lowest;
+
+	lowest = find_lowest(*a);
+	while (stack_len(a) > 3)
+	{
+		while (*a != lowest)
+		if ( == lowest)
+			ra(a);
+		pb(a, b);
+		lowest = find_lowest(*a);
+	}
+	if (!sort_check(a))
+		short_sort(a, b);
+	while (*b)
+		pa(a, b);
+}
 void short_sort(t_stack **a, t_stack **b)
 {
 	t_stack *highest;
-
-	if ((*a)->size == 2)
+	
+	highest = find_highest(*a);
+	if (stack_len(a) == 2)
 		sa(a);
-	else if ((*a)->size == 3)
+	else if (stack_len(a) == 3)
 	{
-		highest = find_highest(*a);
 		if (*a == highest)
 			ra(a);
 		else if ((*a)->next == highest)
@@ -48,7 +86,7 @@ void short_sort(t_stack **a, t_stack **b)
 		if ((*a)->value > (*a)->next->value)
 			sa(a);
 	}
-	*b = NULL;
-	/*else if (a->size <= 5)
-		sort_five(a, b); */
+	else if (stack_len(a) <= 5)
+		mini_sort(a, b);	
 }
+

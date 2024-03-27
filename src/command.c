@@ -6,7 +6,7 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 18:34:31 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/03/26 19:52:25 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/03/27 12:00:39 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,42 @@ static void reverse_rotate(t_stack **stack)
 	*stack = last_node;
 }
 
+static void	push(t_stack **src, t_stack **dest)
+{
+	t_stack *tmp;
+
+	if (src == NULL || *src == NULL)
+		return ;
+	tmp = *src;
+	*src = (*src)->next;
+	if (*src)
+		(*src)->prev = NULL;
+	tmp->prev = NULL;
+	if (!*dest)
+	{
+		*dest = tmp;
+		tmp->next = NULL;
+	}
+	else
+	{
+		tmp->next = *dest;
+		(*dest)->prev = tmp;
+		*dest = tmp;
+	}
+}
+
+void pa(t_stack **a, t_stack **b)
+{
+	push(b, a);
+	ft_putstr_fd("pa\n", 1);
+}
+
+void pb(t_stack **a, t_stack **b)
+{
+	push(a, b);
+	ft_putstr_fd("pb\n", 1);
+}
+
 void sa(t_stack **a)
 {
 	swap(a);
@@ -103,4 +139,17 @@ void rra(t_stack **a)
 {
 	reverse_rotate(a);
 	ft_putstr_fd("rra\n", 1);
+}
+
+void rrb(t_stack **b)
+{
+	reverse_rotate(b);
+	ft_putstr_fd("rrb\n", 1);
+}
+
+void rrr(t_stack **a, t_stack **b)
+{
+	reverse_rotate(a);
+	reverse_rotate(b);
+	ft_putstr_fd("rrr\n", 1);
 }

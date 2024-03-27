@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/22 13:45:36 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/03/22 18:31:04 by lotrapan         ###   ########.fr       */
+/*   Created: 2024/03/27 11:23:36 by lotrapan          #+#    #+#             */
+/*   Updated: 2024/03/27 11:25:27 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-//S = syntax
-
-void	ft_error(char c)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	if (c == 'S')
-		ft_putstr_fd("Syntax error\n", 2);
-	exit(1);
+	while (*s1 && *s2 && *s1 == *s2)
+	{
+		s1++;
+		s2++;
+		if (*s1 != *s2)
+			return (1);
+	}
+	return ((unsigned char)*s1 - (unsigned char)*s2);
 }
