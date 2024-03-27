@@ -6,7 +6,7 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 14:33:57 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/03/27 18:56:43 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/03/27 19:19:48 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,9 @@ void	rrb(t_stack **b);
 void	rrr(t_stack **a, t_stack **b);
 //*SHORT_SORT*//
 void	short_sort(t_stack **a, t_stack **b);
+t_stack	*find_lowest(t_stack *stack);
 //*LONG_SORT*//
+void	long_sort(t_stack **a, t_stack **b);
 //*STACK_UTILS*//
 void		stack_init(t_stack **a, char **av, bool flag_ac);
 void		print_stack(t_stack **stack);

@@ -6,7 +6,7 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 13:34:17 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/03/27 16:54:06 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/03/27 19:17:55 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static t_stack	*find_highest(t_stack *stack)
 	return (highest_node);
 }
 
-static t_stack	*find_lowest(t_stack *stack)
+t_stack	*find_lowest(t_stack *stack)
 {
 	int				lowest;
 	t_stack		*lowest_node;
