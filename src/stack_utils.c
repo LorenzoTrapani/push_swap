@@ -6,7 +6,7 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 18:47:35 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/03/27 17:05:58 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/03/28 19:24:44 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,10 @@ void	print_stack(t_stack **stack)
 	tmp = *stack;
 	while (tmp)
 	{
-		ft_putnbr_fd(tmp->value, 1);
+		ft_printf(1, "target_node: %p, value: %d, price: %d\n", tmp->target_node, tmp->value, tmp->price);
+		/* ft_putnbr_fd(tmp->price, 1);
+		write(1, " ", 1);
+		ft_putnbr_fd(tmp->value, 1); */
 		ft_putchar_fd('\n', 1);
 		tmp = tmp->next;
 	}
@@ -99,6 +102,20 @@ t_stack *stack_last(t_stack **stack)
 		if (!tmp->next)
 			return (tmp);
 		tmp = tmp->next;
+	}
+	return (tmp);
+}
+
+t_stack *stack_first(t_stack **stack)
+{
+	t_stack *tmp;
+
+	tmp = *stack;
+	while (tmp)
+	{
+		if (!tmp->prev)
+			return (tmp);
+		tmp = tmp->prev;
 	}
 	return (tmp);
 }

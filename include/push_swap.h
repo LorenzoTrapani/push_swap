@@ -6,7 +6,7 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 14:33:57 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/03/27 19:19:48 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/03/28 19:25:57 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ typedef struct s_stack
 	int				*stack;
 	int				size;
 	int				value;
+	int				price;
+	bool			is_in_lis;
+	bool			over_median;
 	struct s_stack	*target_node;
 	struct s_stack	*next;
 	struct s_stack	*prev;
@@ -54,14 +57,19 @@ void	rrr(t_stack **a, t_stack **b);
 //*SHORT_SORT*//
 void	short_sort(t_stack **a, t_stack **b);
 t_stack	*find_lowest(t_stack *stack);
+t_stack	*find_highest(t_stack *stack);
 //*LONG_SORT*//
 void	long_sort(t_stack **a, t_stack **b);
+void	set_position(t_stack **stack);
+void	set_price(t_stack **a, t_stack **b);
+void	set_target_node(t_stack **a, t_stack **b);
 //*STACK_UTILS*//
 void		stack_init(t_stack **a, char **av, bool flag_ac);
 void		print_stack(t_stack **stack);
 void		add_node(t_stack **a, long nbr);
 int			stack_len(t_stack **stack);
 t_stack 	*stack_last(t_stack **stack);
+t_stack		*stack_first(t_stack **stack);
 //*FREE*//
 void	ft_free_split(char **av);
 void	ft_free_stack(t_stack *stack);

@@ -6,7 +6,7 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 13:34:17 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/03/27 19:17:55 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/03/28 19:18:18 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,15 @@ static void mini_sort(t_stack **a, t_stack **b)
 		pb(a, b);
 		lowest = find_lowest(*a);
 	}
-	if (!sort_check(a))
-		short_sort(a, b);
-	while (*b)
-		pa(a, b);
+	set_price(a, b);
+	set_target_node(a, b);
+	print_stack(a);
+	write(1, "\n", 1);
+	print_stack(b);
+	/* if (!sort_check(a))
+		short_sort(a, b); */
+	/* while (*b)
+		pa(a, b); */
 }
 void short_sort(t_stack **a, t_stack **b)
 {
