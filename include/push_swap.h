@@ -6,7 +6,7 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 14:33:57 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/03/28 19:25:57 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/04/04 23:12:58 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ typedef struct s_stack
 	int				size;
 	int				value;
 	int				price;
-	bool			is_in_lis;
+	int 			chunk_tot;
+	int				chunk_idx;
 	bool			over_median;
 	struct s_stack	*target_node;
 	struct s_stack	*next;
@@ -54,25 +55,29 @@ void	rr(t_stack **a, t_stack **b);
 void	rra(t_stack **a);
 void	rrb(t_stack **b);
 void	rrr(t_stack **a, t_stack **b);
+//*INSERTION_SORT*//
+void	insertion_sort(t_stack **stack);
 //*SHORT_SORT*//
 void	short_sort(t_stack **a, t_stack **b);
 t_stack	*find_lowest(t_stack *stack);
-t_stack	*find_highest(t_stack *stack);
+t_stack	*find_highest(t_stack *stack, int len);
 //*LONG_SORT*//
 void	long_sort(t_stack **a, t_stack **b);
+t_stack	*find_best_price(t_stack **a, t_stack **b);
+//*SET*//
 void	set_position(t_stack **stack);
-void	set_price(t_stack **a, t_stack **b);
+int		move_price(t_stack **stack);
 void	set_target_node(t_stack **a, t_stack **b);
 //*STACK_UTILS*//
-void		stack_init(t_stack **a, char **av, bool flag_ac);
-void		print_stack(t_stack **stack);
-void		add_node(t_stack **a, long nbr);
-int			stack_len(t_stack **stack);
-t_stack 	*stack_last(t_stack **stack);
-t_stack		*stack_first(t_stack **stack);
+void	stack_init(t_stack **a, char **av, bool flag_ac);
+void	print_stack(t_stack **stack);
+void	add_node(t_stack **a, long nbr);
+int		stack_len(t_stack **stack);
+t_stack *stack_last(t_stack **stack);
+t_stack	*stack_first(t_stack **stack);
 //*FREE*//
-void	ft_free_split(char **av);
-void	ft_free_stack(t_stack *stack);
-void	ft_free_error(t_stack **a, char **av, bool flag_ac, char *error_name);
+void	free_split(char **av);
+void	free_stack(t_stack *stack);
+void	free_error(t_stack **a, char **av, bool flag_ac, char *error_name);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 18:47:35 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/03/28 19:24:44 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/04/04 22:07:01 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ void	add_node(t_stack **a, long nbr)
 		return ;
 	new = malloc(sizeof(t_stack));
 	if (!new)
-		ft_free_error(a, NULL, false, "Malloc");
+		free_error(a, NULL, false, "Malloc");
 	new->value = nbr;
 	new->next = NULL;
 	if (!*a)
 	{
 		*a = new;
-		new->prev = NULL;
+		new->next = NULL;
 	}
 	else
 	{
@@ -48,17 +48,17 @@ void	stack_init(t_stack **a, char **av, bool flag_ac)
 	while (av[i])
 	{
 		if (!(syntax_check(av[i])))			
-			ft_free_error(a, av, flag_ac, "Syntax");
-		nbr = ft_atol(av[i]);
+			free_error(a, av, flag_ac, "Syntax");
+		nbr = atol(av[i]);
 		if (nbr > INT_MAX || nbr < INT_MIN)
-			ft_free_error(a, av, flag_ac, "Int size");
+			free_error(a, av, flag_ac, "Int size");
 		if (!check_doubles(*a, (int)nbr))
-			ft_free_error(a, av, flag_ac, "Doppelganger");			
+			free_error(a, av, flag_ac, "Doppelganger");			
 		add_node(a, (int)nbr);
 		i++;
 	}
 	if (flag_ac)
-		ft_free_split(av);
+		free_split(av);
 }
 
 void	print_stack(t_stack **stack)
@@ -68,11 +68,7 @@ void	print_stack(t_stack **stack)
 	tmp = *stack;
 	while (tmp)
 	{
-		ft_printf(1, "target_node: %p, value: %d, price: %d\n", tmp->target_node, tmp->value, tmp->price);
-		/* ft_putnbr_fd(tmp->price, 1);
-		write(1, " ", 1);
-		ft_putnbr_fd(tmp->value, 1); */
-		ft_putchar_fd('\n', 1);
+		ft_printf(1, "value:%d, target_node:%d, price:%d\n", tmp->value, tmp->target_node, tmp->price);
 		tmp = tmp->next;
 	}
 }

@@ -5,89 +5,91 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/22 19:26:31 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/03/28 19:36:23 by lotrapan         ###   ########.fr       */
+/*   Created: 2024/04/03 19:11:06 by lotrapan          #+#    #+#             */
+/*   Updated: 2024/04/04 23:36:07 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void set_target_node(t_stack **a, t_stack **b)
+static int set_price(t_stack **b, t_stack *target_node)
 {
-	t_stack	*tmp_a;
-	t_stack	*tmp_b;
-	t_stack	*target_node;
-	long	best_match;
+	int moves_b;
+	int moves_target;
+	t_stack *tmp_b;
 
-	tmp_a = *a;
 	tmp_b = *b;
+	moves_b = move_price(&tmp_b);
+	moves_target = move_price(&target_node);
+	return (moves_b + moves_target);
+}
+
+t_stack *find_best_price(t_stack **a, t_stack **b)
+{
+	t_stack *tmp_b;
+	t_stack *best_node;
+	static int best_price;
+	int price;
+
+	tmp_b = *b;
+	best_price = INT_MAX;
+	best_node = NULL;
+	set_position(a);
+	set_position(b);
+	set_target_node(a, b);
 	while (tmp_b)
 	{
-		best_match = LONG_MAX;
-		while (tmp_a)
+		price = set_price(b, tmp_b->target_node);
+		if (price < best_price)
 		{
-		    if (tmp_a->value > tmp_b->value && tmp_a->value < best_match)
-		    {
-				best_match = tmp_a->value;
-				target_node = tmp_a;
-		    }
-		    tmp_a = tmp_a->next;
+			best_node = tmp_b;
+			best_price = tmp_b->price;
 		}
-		if (best_match == LONG_MAX)
-			tmp_b->target_node = find_lowest(*a);
+		tmp_b = tmp_b->next;		
+	}
+	return (best_node);
+}
+
+static void manage_sort(t_stack **a, t_stack **b)
+{
+	t_stack *current_best;
+
+	current_best = find_best_price(a, b);
+	set_position(a);
+	set_position(b);	
+	if (current_best == *b)
+	{
+		if ((*b)->over_median)
+		{
+			while ((*b)->value != (*b)->target_node->value)
+				rb(b);
+		}
 		else
-			tmp_b->target_node = target_node;
-		tmp_b = tmp_b->next;
+		{
+			while ((*b)->value != (*b)->target_node->value)
+				rrb(b);
+		}
+		if ((*a)->over_median)
+		{
+			while ((*a)->value != (*a)->target_node->value)
+				ra(a);
+		}
+		else
+		{
+			while ((*a)->value != (*a)->target_node->value)
+				rra(a);
+		}
 	}
 }
 
-void	set_position(t_stack **stack)
+void	long_sort(t_stack **a, t_stack **b)
 {
-	int		median;
-	t_stack	*tmp;
-
-	tmp = *stack;
-	median = stack_len(stack) / 2;
-	while (tmp)
+	while (stack_len(a) > 3)
+		pb(a, b);
+	short_sort(a, b);
+	while (*b)
 	{
-		if (tmp->value <= median)
-			tmp->over_median = true;
-		else
-			tmp->over_median = false;
-		tmp = tmp->next;
-	}
-}
-
-void	set_price(t_stack **a, t_stack **b)
-{
-	t_stack	*tmp_a;
-	t_stack	*tmp_b;
-	t_stack *rotable;
-	int		price;
-
-	tmp_a = *a;
-	tmp_b = *b;
-	while (tmp_b)
-	{
-		price = 0;
-		rotable = tmp_b;
-		if (tmp_b->over_median)
-		{
-			while (rotable != stack_first(b))
-			{
-				rb(&rotable);
-				price++;
-			}
-		}
-		else if (!tmp_b->over_median)
-		{
-			while (rotable != stack_last(b))
-			{
-				rrb(&rotable);
-				price++;
-			}
-		}
-		tmp_b->price = price;
-		tmp_b = tmp_b->next;
+		manage_sort(a, b);
+		pa(a, b);
 	}
 }

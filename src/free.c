@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 17:52:49 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/03/27 16:39:58 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/04/03 19:19:00 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_free_split(char **av)
+void	free_split(char **av)
 {
 	int	i;
 
@@ -24,7 +24,7 @@ void	ft_free_split(char **av)
 	free(av - 1);
 }
 
-void	ft_free_stack(t_stack *stack)
+void	free_stack(t_stack *stack)
 {
 	t_stack	*tmp;
 
@@ -36,11 +36,11 @@ void	ft_free_stack(t_stack *stack)
 	}
 }
 
-void	ft_free_error(t_stack **a, char **av, bool flag_av, char *error_name)
+void	free_error(t_stack **a, char **av, bool flag_av, char *error_name)
 {
-	ft_free_stack(*a);
+	free_stack(*a);
 	if (flag_av)
-		ft_free_split(av);
+		free_split(av);
 	if (ft_strcmp(error_name, "Syntax") == 0)
 		ft_putstr_fd("Syntax Error\n", 2);
 	else if (ft_strcmp(error_name, "Doppelganger") == 0)

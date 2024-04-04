@@ -6,21 +6,23 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 13:34:17 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/03/28 19:18:18 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/04/04 16:53:50 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static t_stack	*find_highest(t_stack *stack)
+t_stack	*find_highest(t_stack *stack, int len)
 {
 	int				highest;
 	t_stack		*highest_node;
+	int count;
 
-	if (stack == NULL)
+	count = 0;
+	if (stack == NULL || len <= 0)
 		return (NULL);
 	highest = INT_MIN;
-	while (stack)
+	while (stack && count < len)
 	{
 		if (stack->value > highest)
 		{
@@ -28,6 +30,7 @@ static t_stack	*find_highest(t_stack *stack)
 			highest_node = stack;
 		}
 		stack = stack->next;
+		count++;
 	}
 	return (highest_node);
 }
@@ -67,21 +70,16 @@ static void mini_sort(t_stack **a, t_stack **b)
 		pb(a, b);
 		lowest = find_lowest(*a);
 	}
-	set_price(a, b);
-	set_target_node(a, b);
-	print_stack(a);
-	write(1, "\n", 1);
-	print_stack(b);
-	/* if (!sort_check(a))
-		short_sort(a, b); */
-	/* while (*b)
-		pa(a, b); */
+	if (!sort_check(a))
+		short_sort(a, b);
+	while (*b)
+		pa(a, b);
 }
 void short_sort(t_stack **a, t_stack **b)
 {
 	t_stack *highest;
 	
-	highest = find_highest(*a);
+	highest = find_highest(*a, stack_len(a));
 	if (stack_len(a) == 2)
 		sa(a);
 	else if (stack_len(a) == 3)
