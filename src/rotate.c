@@ -6,7 +6,7 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:51:41 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/03/27 18:54:07 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/04/05 16:52:42 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static void rotate(t_stack **stack)
 	(*stack)->prev = NULL;
 	last_node->next->prev = last_node;
 	last_node->next->next = NULL;
+
 }
 
 void ra(t_stack **a)

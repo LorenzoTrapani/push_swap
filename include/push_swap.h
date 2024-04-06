@@ -6,7 +6,7 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 14:33:57 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/04/04 23:12:58 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/04/06 19:36:10 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ typedef struct s_stack
 	int				size;
 	int				value;
 	int				price;
-	int 			chunk_tot;
-	int				chunk_idx;
 	bool			over_median;
 	struct s_stack	*target_node;
 	struct s_stack	*next;
@@ -59,14 +57,14 @@ void	rrr(t_stack **a, t_stack **b);
 void	insertion_sort(t_stack **stack);
 //*SHORT_SORT*//
 void	short_sort(t_stack **a, t_stack **b);
-t_stack	*find_lowest(t_stack *stack);
-t_stack	*find_highest(t_stack *stack, int len);
+int	*find_lowest(t_stack *stack);
+int *find_highest(t_stack *stack);
 //*LONG_SORT*//
 void	long_sort(t_stack **a, t_stack **b);
 t_stack	*find_best_price(t_stack **a, t_stack **b);
 //*SET*//
 void	set_position(t_stack **stack);
-int		move_price(t_stack **stack);
+int		move_price(t_stack **stack, int node_value);
 void	set_target_node(t_stack **a, t_stack **b);
 //*STACK_UTILS*//
 void	stack_init(t_stack **a, char **av, bool flag_ac);

@@ -6,7 +6,7 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 19:26:31 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/04/04 23:12:47 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/04/06 18:59:59 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void set_target_node(t_stack **a, t_stack **b)
 	tmp_b = *b;
 	while (tmp_b)
 	{
+		tmp_a = *a;
 		best_match = LONG_MAX;
 		while (tmp_a)
 		{
@@ -61,19 +62,24 @@ void	set_position(t_stack **stack)
 	}
 }
 
-int move_price(t_stack **stack)
+int move_price(t_stack **stack, int node_value)
 {
     int price;
-	static int index; 
+	int index; 
     t_stack *current;
+	int median;
+	int len;
 
 	current = *stack;
+	len = stack_len(stack);
+	median = len / 2;
 	index = 0;
-    if (current->over_median) {
-        price = index;
-	} else {
-        price = stack_len(stack) - index;
+    while (current && current->value != node_value)
+	{
+		current = current->next;
+		index++;
 	}
-	index++;
+	current->over_median = index <= median;
+	price = current->over_median ? index : len - index;
 	return (price);
 }

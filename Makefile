@@ -16,7 +16,6 @@ SRC = main.c \
 	reverse_rotate.c \
 	swap.c \
 	set.c \
-	insertion_sort.c \
 
 OBJ := $(SRC:%.c=$(SRCDIR)/%.o)
 

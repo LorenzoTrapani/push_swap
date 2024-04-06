@@ -6,7 +6,7 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 18:47:35 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/04/04 22:07:01 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/04/05 15:01:02 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	print_stack(t_stack **stack)
 	tmp = *stack;
 	while (tmp)
 	{
-		ft_printf(1, "value:%d, target_node:%d, price:%d\n", tmp->value, tmp->target_node, tmp->price);
+		ft_printf(1, "value:%d\n", tmp->value);
 		tmp = tmp->next;
 	}
 }
