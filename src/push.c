@@ -6,7 +6,7 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:51:58 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/03/27 18:54:48 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/04/08 18:46:00 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	push(t_stack **src, t_stack **dest)
 	else
 	{
 		tmp->next = *dest;
-		(*dest)->prev = tmp;
+		tmp->next->prev = tmp;
 		*dest = tmp;
 	}
 }

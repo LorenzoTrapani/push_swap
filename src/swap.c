@@ -6,7 +6,7 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:51:25 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/03/27 18:53:23 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/04/10 15:50:10 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ static void	swap(t_stack **stack)
 	int 	tmp;
 	t_stack *small;
 	t_stack *big;
+	int len;
 
-	if (stack == NULL || *stack == NULL)
+	len = stack_len(*stack);
+	if (stack == NULL || *stack == NULL || len == 1)
 		return ;
 	big = *stack;
 	small = (*stack)->next;

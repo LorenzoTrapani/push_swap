@@ -6,7 +6,7 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 14:33:57 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/04/06 19:36:10 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/04/11 19:59:38 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ typedef struct s_stack
 	int				size;
 	int				value;
 	int				price;
+	int				position;
 	bool			over_median;
+	bool			cheapest;
 	struct s_stack	*target_node;
 	struct s_stack	*next;
 	struct s_stack	*prev;
@@ -35,7 +37,7 @@ typedef struct s_stack
 ///////////////
 
 //*CHECK*//
-bool	sort_check(t_stack **a);
+bool	sort_check(t_stack *a);
 bool	syntax_check(char *str);
 bool	check_doubles(t_stack *a, long nbr);
 //*SWAP*//
@@ -53,29 +55,29 @@ void	rr(t_stack **a, t_stack **b);
 void	rra(t_stack **a);
 void	rrb(t_stack **b);
 void	rrr(t_stack **a, t_stack **b);
-//*INSERTION_SORT*//
-void	insertion_sort(t_stack **stack);
 //*SHORT_SORT*//
 void	short_sort(t_stack **a, t_stack **b);
-int	*find_lowest(t_stack *stack);
-int *find_highest(t_stack *stack);
+t_stack	*find_lowest(t_stack **stack);
+t_stack	*find_highest(t_stack **stack);
 //*LONG_SORT*//
 void	long_sort(t_stack **a, t_stack **b);
 t_stack	*find_best_price(t_stack **a, t_stack **b);
 //*SET*//
-void	set_position(t_stack **stack);
-int		move_price(t_stack **stack, int node_value);
-void	set_target_node(t_stack **a, t_stack **b);
+void	set_position(t_stack *stack);
+void 	set_price(t_stack *a, t_stack *b);
+void	set_target_node(t_stack *a, t_stack *b);
+void	set_best(t_stack *b);
+t_stack	*set_best_node(t_stack *b);
 //*STACK_UTILS*//
 void	stack_init(t_stack **a, char **av, bool flag_ac);
 void	print_stack(t_stack **stack);
 void	add_node(t_stack **a, long nbr);
-int		stack_len(t_stack **stack);
-t_stack *stack_last(t_stack **stack);
-t_stack	*stack_first(t_stack **stack);
+int		stack_len(t_stack *stack);
+void	move_in_position(t_stack **a, t_stack **b, t_stack *current_best);
+t_stack	*stack_last(t_stack *stack);
 //*FREE*//
 void	free_split(char **av);
 void	free_stack(t_stack *stack);
-void	free_error(t_stack **a, char **av, bool flag_ac, char *error_name);
+void	free_error(t_stack *stack, char **av, bool flag_ac);
 
 #endif

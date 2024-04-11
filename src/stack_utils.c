@@ -6,7 +6,7 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 18:47:35 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/04/05 15:01:02 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/04/11 20:48:29 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	add_node(t_stack **a, long nbr)
 		return ;
 	new = malloc(sizeof(t_stack));
 	if (!new)
-		free_error(a, NULL, false, "Malloc");
+		free_error(new, NULL, false);
 	new->value = nbr;
 	new->next = NULL;
 	if (!*a)
@@ -48,12 +48,12 @@ void	stack_init(t_stack **a, char **av, bool flag_ac)
 	while (av[i])
 	{
 		if (!(syntax_check(av[i])))			
-			free_error(a, av, flag_ac, "Syntax");
+			free_error(*a, av, flag_ac);
 		nbr = atol(av[i]);
 		if (nbr > INT_MAX || nbr < INT_MIN)
-			free_error(a, av, flag_ac, "Int size");
+			free_error(*a, av, flag_ac);
 		if (!check_doubles(*a, (int)nbr))
-			free_error(a, av, flag_ac, "Doppelganger");			
+			free_error(*a, av, flag_ac);			
 		add_node(a, (int)nbr);
 		i++;
 	}
@@ -61,38 +61,26 @@ void	stack_init(t_stack **a, char **av, bool flag_ac)
 		free_split(av);
 }
 
-void	print_stack(t_stack **stack)
+int stack_len(t_stack *stack)
 {
+	int len;
 	t_stack *tmp;
 
-	tmp = *stack;
+	len = 0;
+	tmp = stack;
 	while (tmp)
 	{
-		ft_printf(1, "value:%d\n", tmp->value);
+		len++;
 		tmp = tmp->next;
 	}
+	return (len);
 }
 
-int stack_len(t_stack **stack)
-{
-	t_stack *tmp;
-	int i;
-
-	i = 0;
-	tmp = *stack;
-	while (tmp)
-	{
-		i++;
-		tmp = tmp->next;
-	}
-	return (i);
-}
-
-t_stack *stack_last(t_stack **stack)
+t_stack *stack_last(t_stack *stack)
 {
 	t_stack *tmp;
 
-	tmp = *stack;
+	tmp = stack;
 	while (tmp)
 	{
 		if (!tmp->next)
@@ -102,16 +90,29 @@ t_stack *stack_last(t_stack **stack)
 	return (tmp);
 }
 
-t_stack *stack_first(t_stack **stack)
+void move_in_position(t_stack **a, t_stack **b, t_stack *current_best)
 {
-	t_stack *tmp;
-
-	tmp = *stack;
-	while (tmp)
+	while (current_best->prev != NULL && current_best->target_node->prev != NULL)
 	{
-		if (!tmp->prev)
-			return (tmp);
-		tmp = tmp->prev;
+		if (current_best->over_median && current_best->target_node->over_median)
+			rr(a, b);
+		else if (!current_best->over_median && !current_best->target_node->over_median)
+			rrr(a, b);
+		else
+			break;
 	}
-	return (tmp);
+	while (current_best->prev != NULL)
+	{
+		if (current_best->over_median)
+			rb(b);
+		else
+			rrb(b);
+	}
+	while (current_best->target_node->prev != NULL)
+	{
+		if (current_best->target_node->over_median)
+			ra(a);
+		else
+			rra(a);
+	}
 }

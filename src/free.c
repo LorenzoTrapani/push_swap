@@ -6,7 +6,7 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 17:52:49 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/04/03 19:19:00 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/04/11 19:59:51 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,11 @@ void	free_stack(t_stack *stack)
 	}
 }
 
-void	free_error(t_stack **a, char **av, bool flag_av, char *error_name)
+void	free_error(t_stack *stack, char **av, bool flag_ac)
 {
-	free_stack(*a);
-	if (flag_av)
+	free_stack(stack);
+	if (flag_ac)
 		free_split(av);
-	if (ft_strcmp(error_name, "Syntax") == 0)
-		ft_putstr_fd("Syntax Error\n", 2);
-	else if (ft_strcmp(error_name, "Doppelganger") == 0)
-		ft_putstr_fd("Doppelganger Error\n", 2);
-	else if (ft_strcmp(error_name, "Int size") == 0)
-		ft_putstr_fd("Int size Error\n", 2);
-	else if (ft_strcmp(error_name, "Malloc") == 0)
-		ft_putstr_fd("Malloc Error\n", 2);	
+	ft_putstr_fd("Error\n", 2);	
 	exit(1);
 }

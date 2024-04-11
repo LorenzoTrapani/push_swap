@@ -6,19 +6,19 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 13:40:20 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/03/27 16:31:52 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/04/11 20:33:26 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-bool	sort_check(t_stack **a)
+bool	sort_check(t_stack *a)
 {
 	t_stack *tmp;
 
-	if (!a || !*a)
+	if (!a)
 		return (true);
-	tmp = *a;
+	tmp = a;
 	while (tmp->next)
 	{
 		if (tmp->value > tmp->next->value)
@@ -33,10 +33,15 @@ bool  syntax_check(char *str)
 	int i;
 
 	i = 0;
-	if (str[i] == '+' || str[i] == '-')
-		i++;
 	while (str[i])
 	{
+		if (str[i] == '-' || str[i] == '+')
+		{
+			if (i != 0)
+				return (false);
+			else
+				i++;
+		}
 		if (!ft_isdigit(str[i]))
 			return (false);
 		i++;
