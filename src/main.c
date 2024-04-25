@@ -16,10 +16,10 @@ int	main(int ac, char **av)
 {
 	t_stack	*a;
 	t_stack	*b;
-	
+
 	a = NULL;
 	b = NULL;
- 	if (ac == 1)
+	if (ac == 1)
 		return (0);
 	else if (ac == 2 && !*av[1])
 		return (ft_putstr_fd("Error\n", 2), 1);
@@ -29,8 +29,8 @@ int	main(int ac, char **av)
 	if (!sort_check(a))
 	{
 		if (stack_len(a) >= 2 && stack_len(a) <= 5)
-			short_sort(&a, &b); 
-		 else
+			short_sort(&a, &b);
+		else
 			long_sort(&a, &b);
 	}
 	free_stack(a);

@@ -14,7 +14,7 @@
 
 static void	push(t_stack **src, t_stack **dest)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	if (src == NULL || *src == NULL)
 		return ;
@@ -36,14 +36,14 @@ static void	push(t_stack **src, t_stack **dest)
 	}
 }
 
-void pa(t_stack **a, t_stack **b, bool check)
+void	pa(t_stack **a, t_stack **b, bool check)
 {
 	push(b, a);
 	if (check)
 		ft_putstr_fd("pa\n", 1);
 }
 
-void pb(t_stack **a, t_stack **b, bool check)
+void	pb(t_stack **a, t_stack **b, bool check)
 {
 	push(a, b);
 	if (check)

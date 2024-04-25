@@ -17,7 +17,7 @@ void	free_split(char **av)
 	int	i;
 
 	i = -1;
-	if ( av == NULL || *av == NULL)
+	if (av == NULL || *av == NULL)
 		return ;
 	while (av[i])
 		free(av[i++]);
@@ -41,6 +41,6 @@ void	free_error(t_stack *stack, char **av, bool flag_ac)
 	free_stack(stack);
 	if (flag_ac)
 		free_split(av);
-	ft_putstr_fd("Error\n", 2);	
+	ft_putstr_fd("Error\n", 2);
 	exit(1);
 }

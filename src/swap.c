@@ -14,10 +14,10 @@
 
 static void	swap(t_stack **stack)
 {
-	int 	tmp;
-	t_stack *small;
-	t_stack *big;
-	int len;
+	int		tmp;
+	t_stack	*small;
+	t_stack	*big;
+	int		len;
 
 	len = stack_len(*stack);
 	if (stack == NULL || *stack == NULL || len == 1)
@@ -26,24 +26,24 @@ static void	swap(t_stack **stack)
 	small = (*stack)->next;
 	tmp = big->value;
 	big->value = small->value;
-	small->value = tmp;	
+	small->value = tmp;
 }
 
-void sa(t_stack **a, bool check)
+void	sa(t_stack **a, bool check)
 {
 	swap(a);
 	if (check)
 		ft_putstr_fd("sa\n", 1);
 }
 
-void sb(t_stack **b, bool check)
+void	sb(t_stack **b, bool check)
 {
 	swap(b);
 	if (check)
 		ft_putstr_fd("sb\n", 1);
 }
 
-void ss(t_stack **a, t_stack **b, bool check)
+void	ss(t_stack **a, t_stack **b, bool check)
 {
 	swap(a);
 	swap(b);

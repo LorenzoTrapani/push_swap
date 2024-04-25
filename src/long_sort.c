@@ -12,28 +12,28 @@
 
 #include "push_swap.h"
 
-static void manage_sort(t_stack **a, t_stack **b)
+static void	manage_sort(t_stack **a, t_stack **b)
 {
-	t_stack *current_best;
+	t_stack	*current_best;
 
 	set_position(*a);
 	set_position(*b);
 	set_target_node(*a, *b);
 	set_price(*a, *b);
 	set_best(*b);
-	current_best = set_best_node(*b); 
+	current_best = set_best_node(*b);
 	while (current_best)
 	{
 		if (current_best->cheapest)
-			break;
+			break ;
 		current_best = current_best->next;
 	}
 	move_in_position(a, b, current_best);
-} 
+}
 
 void	long_sort(t_stack **a, t_stack **b)
 {
-	t_stack *lowest;
+	t_stack	*lowest;
 
 	while (stack_len(*a) > 3)
 	{
@@ -51,7 +51,7 @@ void	long_sort(t_stack **a, t_stack **b)
 		pa(a, b, true);
 	}
 	lowest = find_lowest(a);
- 	while (*a != lowest)
+	while (*a != lowest)
 	{
 		if (lowest->over_median)
 			ra(a, true);

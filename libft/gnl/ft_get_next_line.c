@@ -73,7 +73,7 @@ static char	*ft_read_line(int fd, char *remainder)
 			return (NULL);
 		}
 		read_remainder[bytes_read] = '\0';
-		remainder = ft_strjoin(remainder, read_remainder); 
+		remainder = ft_strjoin(remainder, read_remainder);
 	}
 	return (free(read_remainder), remainder);
 }

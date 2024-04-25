@@ -14,9 +14,9 @@
 
 t_stack	*find_highest(t_stack **stack)
 {
-	int				highest;
-	t_stack		*highest_node;
-	t_stack		*tmp;
+	int		highest;
+	t_stack	*highest_node;
+	t_stack	*tmp;
 
 	if (stack == NULL)
 		return (NULL);
@@ -36,9 +36,9 @@ t_stack	*find_highest(t_stack **stack)
 
 t_stack	*find_lowest(t_stack **stack)
 {
-	int				lowest;
-	t_stack		*lowest_node;
-	t_stack		*tmp;
+	int		lowest;
+	t_stack	*lowest_node;
+	t_stack	*tmp;
 
 	if (stack == NULL)
 		return (NULL);
@@ -56,9 +56,9 @@ t_stack	*find_lowest(t_stack **stack)
 	return (lowest_node);
 }
 
-static void mini_sort(t_stack **a, t_stack **b)
+static void	mini_sort(t_stack **a, t_stack **b)
 {
-	t_stack *lowest;
+	t_stack	*lowest;
 
 	lowest = find_lowest(a);
 	while (stack_len(*a) > 3)
@@ -77,10 +77,10 @@ static void mini_sort(t_stack **a, t_stack **b)
 		pa(a, b, true);
 }
 
-void short_sort(t_stack **a, t_stack **b)
+void	short_sort(t_stack **a, t_stack **b)
 {
-	t_stack *highest;
-	
+	t_stack	*highest;
+
 	highest = find_highest(a);
 	if (stack_len(*a) == 2)
 		sa(a, true);
@@ -96,4 +96,3 @@ void short_sort(t_stack **a, t_stack **b)
 	else if (stack_len(*a) <= 5)
 		mini_sort(a, b);
 }
-

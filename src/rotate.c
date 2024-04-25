@@ -12,17 +12,17 @@
 
 #include "push_swap.h"
 
-static void rotate(t_stack **stack) 
+static void	rotate(t_stack **stack)
 {
-    t_stack *last_node;
-	int len;
+	t_stack	*last_node;
+	int		len;
 
 	len = stack_len(*stack);
-    if (stack == NULL || *stack == NULL || len == 1)
+	if (stack == NULL || *stack == NULL || len == 1)
 		return ;
-    last_node = *stack;
-    while (last_node->next)
-	    last_node = last_node->next;
+	last_node = *stack;
+	while (last_node->next)
+		last_node = last_node->next;
 	last_node->next = *stack;
 	*stack = (*stack)->next;
 	(*stack)->prev = NULL;
@@ -30,21 +30,21 @@ static void rotate(t_stack **stack)
 	last_node->next->next = NULL;
 }
 
-void ra(t_stack **a, bool check)
+void	ra(t_stack **a, bool check)
 {
 	rotate(a);
 	if (check)
 		ft_putstr_fd("ra\n", 1);
 }
 
-void rb(t_stack **b, bool check)
+void	rb(t_stack **b, bool check)
 {
 	rotate(b);
 	if (check)
 		ft_putstr_fd("rb\n", 1);
 }
 
-void rr(t_stack **a, t_stack **b, bool check)
+void	rr(t_stack **a, t_stack **b, bool check)
 {
 	rotate(a);
 	rotate(b);

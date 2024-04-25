@@ -15,6 +15,6 @@
 
 # include "libft.h"
 
-int		ft_printf(int fd, const char *format, ...);
+int	ft_printf(int fd, const char *format, ...);
 
 #endif

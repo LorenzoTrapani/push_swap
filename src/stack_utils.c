@@ -6,7 +6,7 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 18:47:35 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/04/17 15:09:33 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/04/25 19:14:46 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	add_node(t_stack **a, long nbr)
 {
-	t_stack *new;
-	t_stack *last_node;
+	t_stack	*new;
+	t_stack	*last_node;
 
 	if (a == NULL)
 		return ;
@@ -41,19 +41,19 @@ void	add_node(t_stack **a, long nbr)
 
 void	stack_init(t_stack **a, char **av, bool flag_ac)
 {
-	long nbr;
-	int i;
+	long	nbr;
+	int		i;
 
 	i = 0;
 	while (av[i])
 	{
-		if (!(syntax_check(av[i])))			
+		if (!(syntax_check(av[i])))
 			free_error(*a, av, flag_ac);
 		nbr = atol(av[i]);
 		if (nbr > INT_MAX || nbr < INT_MIN)
 			free_error(*a, av, flag_ac);
 		if (!check_doubles(*a, (int)nbr))
-			free_error(*a, av, flag_ac);			
+			free_error(*a, av, flag_ac);
 		add_node(a, (int)nbr);
 		i++;
 	}
@@ -61,10 +61,10 @@ void	stack_init(t_stack **a, char **av, bool flag_ac)
 		free_split(av);
 }
 
-int stack_len(t_stack *stack)
+int	stack_len(t_stack *stack)
 {
-	int len;
-	t_stack *tmp;
+	int		len;
+	t_stack	*tmp;
 
 	len = 0;
 	tmp = stack;
@@ -76,9 +76,9 @@ int stack_len(t_stack *stack)
 	return (len);
 }
 
-t_stack *stack_last(t_stack *stack)
+t_stack	*stack_last(t_stack *stack)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	tmp = stack;
 	while (tmp)
@@ -90,16 +90,18 @@ t_stack *stack_last(t_stack *stack)
 	return (tmp);
 }
 
-void move_in_position(t_stack **a, t_stack **b, t_stack *current_best)
+void	move_in_position(t_stack **a, t_stack **b, t_stack *current_best)
 {
-	while (current_best->prev != NULL && current_best->target_node->prev != NULL)
+	while (current_best->prev != NULL
+		&& current_best->target_node->prev != NULL)
 	{
 		if (current_best->over_median && current_best->target_node->over_median)
 			rr(a, b, true);
-		else if (!current_best->over_median && !current_best->target_node->over_median)
+		else if (!current_best->over_median
+			&& !current_best->target_node->over_median)
 			rrr(a, b, true);
 		else
-			break;
+			break ;
 	}
 	while (current_best->prev != NULL)
 	{

@@ -6,7 +6,7 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 14:29:50 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/04/25 18:23:12 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/04/25 19:29:19 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,30 +61,37 @@ static void	command_check(t_stack **a, t_stack **b, char *line)
 		error_checker(a, b, line);
 }
 
-int main(int ac, char **av)
+static void	execute_command(t_stack **a, t_stack **b)
 {
-	t_stack	*a;
-	t_stack	*b;
 	char	*line;
-	
-	a = NULL;
-	b = NULL;
-	if (ac == 1)
-		return (0);
-	else if ((ac == 2 && (!*av[1] || *av[1] == ' ')) || (ft_strnstr(av[1], "  ", ft_strlen(av[1]))))
-		return (ft_putstr_fd("Error\n", 2), 1);
-	else if (ac == 2)
-		av = ft_split_argv(av[1], ' ');
-	stack_init(&a, av + 1, ac == 2);
+
 	line = ft_get_next_line(0);
 	while (line && ft_strcmp(line, "\n"))
 	{
-		command_check(&a, &b, line);
+		command_check(a, b, line);
 		free(line);
 		line = ft_get_next_line(0);
 	}
 	if (line)
 		free(line);
+}
+
+int	main(int ac, char **av)
+{
+	t_stack	*a;
+	t_stack	*b;
+
+	a = NULL;
+	b = NULL;
+	if (ac == 1)
+		return (0);
+	else if ((ac == 2 && (!*av[1] || *av[1] == ' ')) || (ft_strnstr(av[1], "  ",
+				ft_strlen(av[1]))))
+		return (ft_putstr_fd("Error\n", 2), 1);
+	else if (ac == 2)
+		av = ft_split_argv(av[1], ' ');
+	stack_init(&a, av + 1, ac == 2);
+	execute_command(&a, &b);
 	putmessage(a, b);
 	free_stack(a);
 	return (0);

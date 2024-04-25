@@ -14,7 +14,7 @@
 
 bool	sort_check(t_stack *a)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	if (!a)
 		return (true);
@@ -28,9 +28,9 @@ bool	sort_check(t_stack *a)
 	return (true);
 }
 
-bool  syntax_check(char *str)
+bool	syntax_check(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -51,7 +51,7 @@ bool  syntax_check(char *str)
 
 bool	check_doubles(t_stack *a, long nbr)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	if (!a)
 		return (true);
