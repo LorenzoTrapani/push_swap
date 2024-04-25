@@ -6,7 +6,7 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 14:33:57 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/04/11 19:59:38 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/04/17 15:01:43 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "libft.h"
+
 ////////////////
 ///STRUCTURES///
 ////////////////
@@ -41,20 +42,20 @@ bool	sort_check(t_stack *a);
 bool	syntax_check(char *str);
 bool	check_doubles(t_stack *a, long nbr);
 //*SWAP*//
-void	sa(t_stack **a);
-void	sb(t_stack **b);
-void	ss(t_stack **a, t_stack **b);
+void	sa(t_stack **a, bool check);
+void	sb(t_stack **b, bool check);
+void	ss(t_stack **a, t_stack **b, bool check);
 //*PUSH*//
-void	pa(t_stack **a, t_stack **b);
-void	pb(t_stack **a, t_stack **b);
+void	pa(t_stack **a, t_stack **b, bool check);
+void	pb(t_stack **a, t_stack **b, bool check);
 //*ROTATE*//
-void	ra(t_stack **a);
-void	rb(t_stack **b);
-void	rr(t_stack **a, t_stack **b);
+void	ra(t_stack **a, bool check);
+void	rb(t_stack **b, bool check);
+void	rr(t_stack **a, t_stack **b, bool check);
 //*REVERSE_ROTATE*//
-void	rra(t_stack **a);
-void	rrb(t_stack **b);
-void	rrr(t_stack **a, t_stack **b);
+void	rra(t_stack **a, bool check);
+void	rrb(t_stack **b, bool check);
+void	rrr(t_stack **a, t_stack **b, bool check);
 //*SHORT_SORT*//
 void	short_sort(t_stack **a, t_stack **b);
 t_stack	*find_lowest(t_stack **stack);

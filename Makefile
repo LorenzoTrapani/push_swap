@@ -1,12 +1,11 @@
 NAME	= push_swap
+NAME_BONUS = checker
 CC		= cc
 CFLAGS	= -Wall -Wextra -Werror -g -I./include
 SRCDIR	= src
 BINDIR = bin
 RM		= rm -f
-
-SRC = main.c \
-	short_sort.c \
+COMMONSRC = short_sort.c \
 	long_sort.c \
 	stack_utils.c \
 	check.c \
@@ -15,11 +14,22 @@ SRC = main.c \
 	rotate.c \
 	reverse_rotate.c \
 	swap.c \
-	set.c \
+	set.c
+
+SRC = main.c $(COMMONSRC)
+SRC_BONUS = checker.c $(COMMONSRC)
 
 OBJ := $(SRC:%.c=$(SRCDIR)/%.o)
+OBJ_BONUS := $(SRC_BONUS:%.c=$(SRCDIR)/%.o)
 
 all: $(BINDIR)/$(NAME)
+bonus: $(BINDIR)/$(NAME_BONUS)
+
+$(BINDIR)/$(NAME_BONUS): $(OBJ_BONUS)
+	@make -C libft/
+	$(CC) $(CFLAGS)  $(OBJ_BONUS) -o $@ -Llibft -lft
+	@echo "${BOLD}Creating  -> ${RED}${NAME_BONUS}${NO_COLOR}"
+	@${MAKE} camel
 
 $(BINDIR)/$(NAME): $(OBJ)
 	@make -C libft/
@@ -32,11 +42,11 @@ $(SRCDIR)/%.o: $(SRCDIR)/%.c
 
 clean:
 	@make clean -C libft/
-	@$(RM) $(OBJ)
+	@$(RM) $(OBJ) $(OBJ_BONUS)
 
 fclean: clean
 	@make fclean -C libft/
-	@$(RM) $(BINDIR)/$(NAME)
+	@$(RM) $(BINDIR)/$(NAME) $(BINDIR)/$(NAME_BONUS)
 	@echo "${BOLD}Cleaning  -> ${RED}${NAME}${NO_COLOR}"
 	@${MAKE} camel_clean
 

@@ -6,7 +6,7 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:51:58 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/04/08 18:46:00 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/04/17 14:59:50 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,16 @@ static void	push(t_stack **src, t_stack **dest)
 	}
 }
 
-void pa(t_stack **a, t_stack **b)
+void pa(t_stack **a, t_stack **b, bool check)
 {
 	push(b, a);
-	ft_putstr_fd("pa\n", 1);
+	if (check)
+		ft_putstr_fd("pa\n", 1);
 }
 
-void pb(t_stack **a, t_stack **b)
+void pb(t_stack **a, t_stack **b, bool check)
 {
 	push(a, b);
-	ft_putstr_fd("pb\n", 1);
+	if (check)
+		ft_putstr_fd("pb\n", 1);
 }

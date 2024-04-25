@@ -6,7 +6,7 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:51:25 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/04/10 15:50:10 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/04/17 16:12:13 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,21 +29,24 @@ static void	swap(t_stack **stack)
 	small->value = tmp;	
 }
 
-void sa(t_stack **a)
+void sa(t_stack **a, bool check)
 {
 	swap(a);
-	ft_putstr_fd("sa\n", 1);
+	if (check)
+		ft_putstr_fd("sa\n", 1);
 }
 
-void sb(t_stack **b)
+void sb(t_stack **b, bool check)
 {
 	swap(b);
-	ft_putstr_fd("sb\n", 1);
+	if (check)
+		ft_putstr_fd("sb\n", 1);
 }
 
-void ss(t_stack **a, t_stack **b)
+void ss(t_stack **a, t_stack **b, bool check)
 {
 	swap(a);
 	swap(b);
-	ft_putstr_fd("ss\n", 1);
+	if (check)
+		ft_putstr_fd("ss\n", 1);
 }

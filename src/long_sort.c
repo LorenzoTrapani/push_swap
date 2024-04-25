@@ -6,7 +6,7 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 19:11:06 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/04/11 20:31:52 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/04/17 15:09:16 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,25 +38,24 @@ void	long_sort(t_stack **a, t_stack **b)
 	while (stack_len(*a) > 3)
 	{
 		if ((*a) == find_highest(a))
-			ra(a);
-		pb(a, b);
+			ra(a, true);
+		pb(a, b, true);
 		if (stack_len(*b) > 1 && (*b) == find_lowest(b))
-			rb(b);
+			rb(b, true);
 	}
 	if (!sort_check(*a))
 		short_sort(a, b);
 	while (*b)
 	{
 		manage_sort(a, b);
-		pa(a, b);
+		pa(a, b, true);
 	}
 	lowest = find_lowest(a);
  	while (*a != lowest)
 	{
 		if (lowest->over_median)
-			ra(a);
+			ra(a, true);
 		else
-			rra(a);
+			rra(a, true);
 	}
 }
-

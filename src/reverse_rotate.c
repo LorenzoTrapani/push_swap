@@ -6,7 +6,7 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 18:34:31 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/04/10 15:50:05 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/04/17 14:58:45 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,21 +30,24 @@ static void reverse_rotate(t_stack **stack)
 	last_node->next->prev = last_node;
 }
 
-void rra(t_stack **a)
+void rra(t_stack **a, bool check)
 {
 	reverse_rotate(a);
-	ft_putstr_fd("rra\n", 1);
+	if (check)
+		ft_putstr_fd("rra\n", 1);
 }
 
-void rrb(t_stack **b)
+void rrb(t_stack **b, bool check)
 {
 	reverse_rotate(b);
-	ft_putstr_fd("rrb\n", 1);
+	if (check)
+		ft_putstr_fd("rrb\n", 1);
 }
 
-void rrr(t_stack **a, t_stack **b)
+void rrr(t_stack **a, t_stack **b, bool check)
 {
 	reverse_rotate(a);
 	reverse_rotate(b);
-	ft_putstr_fd("rrr\n", 1);
+	if (check)
+		ft_putstr_fd("rrr\n", 1);
 }

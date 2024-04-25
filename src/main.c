@@ -6,7 +6,7 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 14:28:20 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/04/11 20:47:56 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/04/25 15:18:14 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ int	main(int ac, char **av)
 	
 	a = NULL;
 	b = NULL;
- 	if (ac == 1 || (ac == 2 && !*av[1]))
-		return (1);
+ 	if (ac == 1)
+		return (0);
+	else if (ac == 2 && !*av[1])
+		return (ft_putstr_fd("Error\n", 2), 1);
 	else if (ac == 2)
 		av = ft_split_argv(av[1], ' ');
 	stack_init(&a, av + 1, ac == 2);

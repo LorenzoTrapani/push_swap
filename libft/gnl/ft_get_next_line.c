@@ -6,7 +6,7 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 13:07:12 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/03/14 13:16:26 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/04/17 15:24:27 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,11 @@ static char	*ft_get_line(char *remainder)
 
 static char	*ft_read_line(int fd, char *remainder)
 {
-	char	*temp_remainder;
 	char	*read_remainder;
 	ssize_t	bytes_read;
 
 	if (!remainder)
 		remainder = ft_calloc(1, sizeof(char));
-	temp_remainder = remainder;
 	read_remainder = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	bytes_read = 1;
 	while (!ft_strchr(remainder, '\n') && bytes_read > 0)
@@ -71,15 +69,13 @@ static char	*ft_read_line(int fd, char *remainder)
 		if (bytes_read == -1)
 		{
 			free(read_remainder);
-			free(temp_remainder);
+			free(remainder);
 			return (NULL);
 		}
 		read_remainder[bytes_read] = '\0';
-		temp_remainder = remainder;
-		remainder = ft_strjoin(temp_remainder, read_remainder);
+		remainder = ft_strjoin(remainder, read_remainder); 
 	}
-	free(read_remainder);
-	return (remainder);
+	return (free(read_remainder), remainder);
 }
 
 char	*ft_get_next_line(int fd)
@@ -94,6 +90,11 @@ char	*ft_get_next_line(int fd)
 		return (NULL);
 	line = ft_get_line(remainder[fd]);
 	remainder[fd] = ft_remainder_trim(remainder[fd]);
+	if (ft_strlen(remainder[fd]) == 0)
+	{
+		free(remainder[fd]);
+		remainder[fd] = NULL;
+	}
 	return (line);
 }
 

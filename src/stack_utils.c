@@ -6,7 +6,7 @@
 /*   By: lotrapan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 18:47:35 by lotrapan          #+#    #+#             */
-/*   Updated: 2024/04/11 20:48:29 by lotrapan         ###   ########.fr       */
+/*   Updated: 2024/04/17 15:09:33 by lotrapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,24 +95,24 @@ void move_in_position(t_stack **a, t_stack **b, t_stack *current_best)
 	while (current_best->prev != NULL && current_best->target_node->prev != NULL)
 	{
 		if (current_best->over_median && current_best->target_node->over_median)
-			rr(a, b);
+			rr(a, b, true);
 		else if (!current_best->over_median && !current_best->target_node->over_median)
-			rrr(a, b);
+			rrr(a, b, true);
 		else
 			break;
 	}
 	while (current_best->prev != NULL)
 	{
 		if (current_best->over_median)
-			rb(b);
+			rb(b, true);
 		else
-			rrb(b);
+			rrb(b, true);
 	}
 	while (current_best->target_node->prev != NULL)
 	{
 		if (current_best->target_node->over_median)
-			ra(a);
+			ra(a, true);
 		else
-			rra(a);
+			rra(a, true);
 	}
 }
